@@ -1,0 +1,19 @@
+* {box-sizing: border-box}
+
+.skill-container {
+  width: 100%;
+  background-color: #ddd;
+}
+
+.skills {
+  text-align: right;
+  padding: 10px;
+  color: white;
+}
+
+.html {width: 100%; background-color: #f16529;}
+.css {width: 100%; background-color: #2196F3;}
+.js {width: 100%; background-color: #f7e018;}
+.php {width: 100%; background-color: #617cbe;}
+.unity{width: 100%; background-color: #000;}
+.c-sharp{width: 100%; background-color: #6a1f7c;}
