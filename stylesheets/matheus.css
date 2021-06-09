@@ -9,11 +9,26 @@
   text-align: right;
   padding: 10px;
   color: white;
+  border-radius: 2px;
 }
 
 .linkedin-link{
     text-decoration: none;
     color: inherit;
+}
+
+.link-language{
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover{
+  text-decoration: none imp !important;
+}
+
+.img-icon{
+  height: 25px;
+  width: 25px;
 }
 
 .html {width: 100%; background-color: #f16529;}
@@ -22,3 +37,5 @@
 .php {width: 100%; background-color: #617cbe;}
 .unity{width: 100%; background-color: #000;}
 .c-sharp{width: 100%; background-color: #6a1f7c;}
+.aa{width: 100%; background-color: #3aa3cc;}
+
