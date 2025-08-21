@@ -79,14 +79,7 @@ h1, h2, h3, h4, h5, h6 {
   100% { background-position: 0% 0%, -400px -400px, 300px -300px, -500px 500px, 350px -350px, -450px 450px, 250px -250px, -380px 380px, 200px -200px, -320px 320px, 280px -280px; }
 }
 
-/* Make constellation move faster on hover */
-.page-header:hover::before {
-  animation-duration: 40s;
-}
 
-.page-header:hover::after {
-  animation-duration: 50s;
-}
 
 
 
@@ -160,9 +153,7 @@ h1, h2, h3, h4, h5, h6 {
   80% { transform: translateX(1px); }
 }
 
-.page-header:hover .project-name {
-  animation: matrix-glitch 0.3s ease-in-out;
-}
+
 
 .project-name {
   font-weight: 700 !important;
@@ -323,6 +314,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 500;
   margin-left: 0.5rem;
   font-size: 0.95rem;
+  color: var(--text-primary) !important;
 }
 
 .language-divider {
@@ -362,19 +354,25 @@ h1, h2, h3, h4, h5, h6 {
 .contact-item i {
   margin-right: 1rem;
   font-size: 1.2rem;
-  color: #667eea;
+  color: #81c7d4;
   width: 30px;
   text-align: center;
 }
 
+.contact-item span {
+  color: var(--text-primary) !important;
+  font-weight: 500;
+}
+
 .linkedin-link, .link-language {
   text-decoration: none;
-  color: inherit;
+  color: var(--text-primary) !important;
   transition: color 0.3s ease;
+  font-weight: 500;
 }
 
 .linkedin-link:hover, .link-language:hover {
-  color: #667eea;
+  color: #81c7d4 !important;
   text-decoration: none;
 }
 
