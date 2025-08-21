@@ -10,7 +10,25 @@ body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
   background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
   min-height: 100vh;
-  color: #e2e8f0;
+  color: #f7fafc;
+}
+
+/* Ensure all text has proper contrast */
+p {
+  color: var(--text-secondary) !important;
+  line-height: 1.7;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary) !important;
+}
+
+.main-content h1, .main-content h2, .main-content h3, .main-content h4, .main-content h5, .main-content h6 {
+  color: var(--text-primary) !important;
+}
+
+.main-content p {
+  color: var(--text-secondary) !important;
 }
 
 /* Matrix-style page header */
@@ -72,29 +90,27 @@ body {
   100% { transform: translateY(50%); }
 }
 
-/* Matrix falling code effect */
+/* Constellation connecting lines on hover */
 .page-header::after {
-  content: "01001000 01100101 01101100 01101100 01101111 00100000 01010111 01101111 01110010 01101100 01100100 00001010 01000010 01100001 01100011 01101011 01100101 01101110 01100100 00100000 01000100 01100101 01110110 01100101 01101100 01101111 01110000 01100101 01110010 00001010 01000110 01110010 01101111 01101110 01110100 01100101 01101110 01100100 00100000 01000100 01100101 01110110 01100101 01101100 01101111 01110000 01100101 01110010 00001010 01001000 01010100 01001101 01001100 00100000 01000011 01010011 01010011 00100000 01001010 01100001 01110110 01100001 01010011 01100011 01110010 01101001 01110000 01110100 00001010 01010000 01001000 01010000 00100000 01000011 00100011 00100000 01010101 01101110 01101001 01110100 01111001 00001010 01010010 01100101 01100001 01100011 01110100 00100000 01001110 01101111 01100100 01100101 00100000 01000001 01101110 01100111 01110101 01101100 01100001 01110010 00001010 01001000 01010100 01001101 01001100 00100000 01000011 01010011 01010011 00100000 01001010 01100001 01110110 01100001 01010011 01100011 01110010 01101001 01110000 01110100 00001010 01010000 01001000 01010000 00100000 01000011 00100011 00100000 01010101 01101110 01101001 01110100 01111001 00001010 01010010 01100101 01100001 01100011 01110100 00100000 01001110 01101111 01100100 01100101 00100000 01000001 01101110 01100111 01110101 01101100 01100001 01110010 00001010 01000010 01100001 01100011 01101011 01100101 01101110 01100100 00100000 01000100 01100101 01110110 01100101 01101100 01101111 01110000 01100101 01110010 00001010 01000110 01110010 01101111 01101110 01110100 01100101 01101110 01100100 00100000 01000100 01100101 01110110 01100101 01101100 01101111 01110000 01100101 01110010";
+  content: '';
   position: absolute;
-  top: -100%;
+  top: 0;
   left: 0;
   right: 0;
-  height: 200%;
-  font-family: 'JetBrains Mono', 'Courier New', monospace;
-  font-size: 10px;
-  line-height: 12px;
-  color: rgba(0, 255, 0, 0.4);
-  word-wrap: break-word;
-  white-space: pre-wrap;
+  bottom: 0;
+  background-image: 
+    linear-gradient(45deg, transparent 49%, rgba(255, 255, 255, 0.1) 49.5%, rgba(255, 255, 255, 0.1) 50.5%, transparent 51%),
+    linear-gradient(-45deg, transparent 49%, rgba(255, 255, 255, 0.1) 49.5%, rgba(255, 255, 255, 0.1) 50.5%, transparent 51%),
+    linear-gradient(135deg, transparent 49%, rgba(255, 255, 255, 0.05) 49.5%, rgba(255, 255, 255, 0.05) 50.5%, transparent 51%);
+  background-size: 150px 150px, 180px 180px, 200px 200px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
   z-index: 2;
-  animation: matrix-fall 20s linear infinite;
-  transition: animation-duration 0.3s ease, color 0.3s ease;
   pointer-events: none;
 }
 
 .page-header:hover::after {
-  animation-duration: 8s;
-  color: rgba(0, 255, 0, 0.7);
+  opacity: 1;
 }
 
 /* Matrix glitch effect */
@@ -142,9 +158,9 @@ body {
   --card-shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.6);
   --border-radius: 16px;
   --border-radius-small: 8px;
-  --text-primary: #e2e8f0;
-  --text-secondary: #cbd5e0;
-  --text-muted: #a0aec0;
+  --text-primary: #f7fafc;
+  --text-secondary: #e2e8f0;
+  --text-muted: #cbd5e0;
   --background-light: #2d3748;
   --background-white: #1a202c;
   --background-dark: #0f0f23;
@@ -401,11 +417,11 @@ body {
 /* Enhanced portfolio cards */
 .portfolio-card {
   transition: all 0.3s ease;
-  border: none !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
   border-radius: var(--border-radius) !important;
   overflow: hidden;
   box-shadow: var(--card-shadow) !important;
-  background: var(--background-white);
+  background: var(--background-white) !important;
 }
 
 .portfolio-card:hover {
@@ -651,6 +667,24 @@ body {
 .node-progress {
   background: linear-gradient(135deg, #68a063 0%, #8cc84b 100%);
   width: 80%;
+}
+
+/* Footer styling for dark theme */
+.site-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+  background: rgba(26, 32, 44, 0.5);
+}
+
+.site-footer-credits {
+  color: var(--text-muted) !important;
+}
+
+.site-footer a {
+  color: #667eea !important;
+}
+
+.site-footer a:hover {
+  color: #764ba2 !important;
 }
 
 /* Responsive improvements */
