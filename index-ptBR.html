@@ -7,7 +7,7 @@
   <link rel="icon" type="image/png" href="/img/favicon_M2.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
   <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
   <link rel="stylesheet" type="text/css" href="stylesheets/matheus.css" media="screen">
@@ -23,358 +23,256 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
     integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
     crossorigin="anonymous"></script>
+  <script>
+    // Modern animations and interactions
+    document.addEventListener('DOMContentLoaded', function() {
+      // Animate skill containers on scroll
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.animation = 'fadeInUp 0.6s ease-out forwards';
+            entry.target.style.animationDelay = Math.random() * 0.3 + 's';
+          }
+        });
+      }, observerOptions);
+
+      // Observe all section cards and skill categories
+      document.querySelectorAll('.section-card, .skill-category, .portfolio-card').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        observer.observe(el);
+      });
+
+      // Add hover effect for skills
+      document.querySelectorAll('.skills').forEach(skill => {
+        skill.addEventListener('mouseenter', function() {
+          this.style.transform = 'scale(1.05)';
+        });
+        
+        skill.addEventListener('mouseleave', function() {
+          this.style.transform = 'scale(1)';
+        });
+      });
+    });
+
+    // Add fadeInUp animation
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
 </head>
 
 <body>
   <section class="page-header">
     <h1 class="project-name">Matheus Ritter Camargo</h1>
-    <h2 class="project-tagline"></h2>
+    <h2 class="project-tagline">Desenvolvedor de Software & Especialista em RPA</h2>
   </section>
 
   <section class="main-content">
-    <h5><a href="index.html" class="link-language"><img src="/img/usa.png" class="img-icon" alt="...">English</a></h5>
-    <hr>
-    <h5><i class="far fa-envelope"></i> matheus.rittercamargo@gmail.com</h5>
-    <hr>
-    <h5><i class="fab fa-linkedin-in"></i> <a class="linkedin-link"
-        href="https://www.linkedin.com/in/matheusritter/">https://www.linkedin.com/in/matheusritter/</a></h5>
-    <hr>
+    <div class="contact-section">
+      <div class="contact-item">
+        <a href="index.html" class="link-language">
+          <img src="/img/usa.png" class="img-icon" alt="English">
+          <span>English</span>
+        </a>
+      </div>
+      <div class="contact-item">
+        <i class="far fa-envelope"></i>
+        <span>matheus.rittercamargo@gmail.com</span>
+      </div>
+      <div class="contact-item">
+        <i class="fab fa-linkedin-in"></i>
+        <a class="linkedin-link" href="https://www.linkedin.com/in/matheusritter/">
+          Perfil LinkedIn
+        </a>
+      </div>
+    </div>
 
-    <h3>
-      <a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true">
-        <span aria-hidden="true" class="octicon octicon-link"></span>
-      </a>Histórico
-    </h3>
-    <p>Iniciei trabalhando na área de TI como suporte e helpdesk, de 2010 até 2015. Trabalho desde 2016 como
-      desenvolvedor de software, principalmente como desenvolvedor web utilizando PHP. Trabalhei com diferentes
-      linguagens
-      de programação como, Javascript, Java, C++ e C#. Jutamente a essas tecnologias trabalhei com suas bibliotecas e
-      frameworks
-      como, AngularJS, AngularIO, Unity, CakePHP, JQuery, Ionic 3, NodeJS e mais recentemente React Native. Hoje em dia
-      sou um programador
-      RPA (Robotic Process Automation - Automação Robótica de Processos) e trabalho com Automation Anywhere, UiPath e
-      IBM RPA. Gosto de fazer novos
-      projetos no meu tempo livre, sozinho ou com amigos, para aprender mais, explorar novas tecnologias e melhorar
-      meu portfólio.
-    </p>
+    <div class="section-card">
+      <h3 class="section-title">
+        <a id="historico" class="anchor" href="#historico" aria-hidden="true">
+          <span aria-hidden="true" class="octicon octicon-link"></span>
+        </a>Histórico Profissional
+      </h3>
+      <p>Iniciei trabalhando na área de TI como suporte e helpdesk, de 2010 até 2015. Trabalho desde 2016 como
+        desenvolvedor de software, principalmente como desenvolvedor web utilizando PHP. Trabalhei com diferentes
+        linguagens de programação como Javascript, Java, C++ e C#. Juntamente a essas tecnologias trabalhei com suas bibliotecas e
+        frameworks como AngularJS, Angular, Unity, CakePHP, jQuery, Ionic 3, NodeJS e mais recentemente React Native. Hoje em dia
+        sou um programador RPA (Robotic Process Automation - Automação Robótica de Processos) e trabalho com Automation Anywhere, UiPath e
+        IBM RPA. Gosto de fazer novos projetos no meu tempo livre, sozinho ou com amigos, para aprender mais, explorar novas tecnologias e melhorar
+        meu portfólio.
+      </p>
+    </div>
 
-    <h3>
-      <a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true">
-        <span aria-hidden="true" class="octicon octicon-link"></span>
-      </a>Objetivo
-    </h3>
-    <p>
-      Sempre busco melhorar meu conhecimento nas tecnologias que trabalho, assim como aprender novas e até mesmo as mais
-      antigas.
-      Gosto de compartilhar meu conhecimento com os outros, porque acredito que assim aprendo mais comigo mesmo e com
-      quem ensino.
-    <h3>
-      <a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true">
-        <span aria-hidden="true" class="octicon octicon-link"></span>
-      </a>Habilidades
-    </h3>
-    <p>
-      Algumas habilidades graficamente representadas. <br>
-      Cinco blocos preenchidos: Domino a tecnologia; <br>
-      Um bloco preenchido: Tenho conhecimento; <br>
-    </p>
-    <p>
+    <div class="section-card">
+      <h3 class="section-title">
+        <a id="objetivo" class="anchor" href="#objetivo" aria-hidden="true">
+          <span aria-hidden="true" class="octicon octicon-link"></span>
+        </a>Objetivo Profissional
+      </h3>
+      <p>
+        Sempre busco melhorar meu conhecimento nas tecnologias que trabalho, assim como aprender novas e até mesmo as mais
+        antigas. Gosto de compartilhar meu conhecimento com os outros, porque acredito que assim aprendo mais comigo mesmo e com
+        quem ensino.
+      </p>
+    </div>
+    <div class="section-card">
+      <h3 class="section-title">
+        <a id="habilidades" class="anchor" href="#habilidades" aria-hidden="true">
+          <span aria-hidden="true" class="octicon octicon-link"></span>
+        </a>Habilidades Técnicas
+      </h3>
+      <p>
+        Aqui está uma representação visual da minha proficiência técnica em diferentes tecnologias.
+        <br><strong>Cinco indicadores preenchidos:</strong> Nível expert de proficiência
+        <br><strong>Um indicador preenchido:</strong> Conhecimento básico e experiência
+      </p>
 
-    <div class="row">
-      <div class="col">
-        <p>PHP</p>
-        <div class="row">
-          <div class="col">
-            <div class="skill-container">
-              <div class="skills php"></div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="skill-container">
-              <div class="skills php"></div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="skill-container">
-              <div class="skills php"></div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="skill-container">
-              <div class="skills php"></div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="skill-container">
-              <div class="skills php"></div>
-            </div>
-          </div>
-          <div class="col">
+      <div class="skills-grid">
+        <div class="skill-category">
+          <h5>PHP</h5>
+          <div class="row">
+            <div class="col"><div class="skill-container"><div class="skills php">Expert</div></div></div>
+            <div class="col"><div class="skill-container"><div class="skills php">Expert</div></div></div>
+            <div class="col"><div class="skill-container"><div class="skills php">Expert</div></div></div>
+            <div class="col"><div class="skill-container"><div class="skills php">Expert</div></div></div>
+            <div class="col"><div class="skill-container"><div class="skills php">Expert</div></div></div>
           </div>
         </div>
-      </div>
 
-      <div class="col">
-        <p>JavaScript</p>
-        <div class="row">
-          <div class="col">
-            <div class="skill-container">
-              <div class="skills js"></div>
-            </div>
+        <div class="skill-category">
+          <h5>JavaScript</h5>
+          <div class="row">
+            <div class="col"><div class="skill-container"><div class="skills js">Avançado</div></div></div>
+            <div class="col"><div class="skill-container"><div class="skills js">Avançado</div></div></div>
+            <div class="col"><div class="skill-container"><div class="skills js">Avançado</div></div></div>
+            <div class="col"><div class="skill-container"><div class="skills js">Avançado</div></div></div>
+            <div class="col"><div class="skill-container"><div class="skills"></div></div></div>
           </div>
-          <div class="col">
-            <div class="skill-container">
-              <div class="skills js"></div>
-            </div>
+        </div>
+
+        <div class="skill-category">
+          <h5>C#</h5>
+          <div class="row">
+            <div class="col"><div class="skill-container"><div class="skills c-sharp">Intermediário</div></div></div>
+            <div class="col"><div class="skill-container"><div class="skills c-sharp">Intermediário</div></div></div>
+            <div class="col"><div class="skill-container"><div class="skills c-sharp">Intermediário</div></div></div>
+            <div class="col"><div class="skill-container"><div class="skills"></div></div></div>
+            <div class="col"><div class="skill-container"><div class="skills"></div></div></div>
           </div>
-          <div class="col">
-            <div class="skill-container">
-              <div class="skills js"></div>
-            </div>
+        </div>
+
+        <div class="skill-category">
+          <h5>Unity</h5>
+          <div class="row">
+            <div class="col"><div class="skill-container"><div class="skills unity">Intermediário</div></div></div>
+            <div class="col"><div class="skill-container"><div class="skills unity">Intermediário</div></div></div>
+            <div class="col"><div class="skill-container"><div class="skills unity">Intermediário</div></div></div>
+            <div class="col"><div class="skill-container"><div class="skills"></div></div></div>
+            <div class="col"><div class="skill-container"><div class="skills"></div></div></div>
           </div>
-          <div class="col">
-            <div class="skill-container">
-              <div class="skills js"></div>
-            </div>
+        </div>
+
+        <div class="skill-category">
+          <h5>HTML</h5>
+          <div class="row">
+            <div class="col"><div class="skill-container"><div class="skills html">Expert</div></div></div>
+            <div class="col"><div class="skill-container"><div class="skills html">Expert</div></div></div>
+            <div class="col"><div class="skill-container"><div class="skills html">Expert</div></div></div>
+            <div class="col"><div class="skill-container"><div class="skills html">Expert</div></div></div>
+            <div class="col"><div class="skill-container"><div class="skills html">Expert</div></div></div>
           </div>
-          <div class="col">
-            <div class="skill-container">
-              <div class="skills"></div>
-            </div>
+        </div>
+
+        <div class="skill-category">
+          <h5>CSS</h5>
+          <div class="row">
+            <div class="col"><div class="skill-container"><div class="skills css">Avançado</div></div></div>
+            <div class="col"><div class="skill-container"><div class="skills css">Avançado</div></div></div>
+            <div class="col"><div class="skill-container"><div class="skills css">Avançado</div></div></div>
+            <div class="col"><div class="skill-container"><div class="skills"></div></div></div>
+            <div class="col"><div class="skill-container"><div class="skills"></div></div></div>
           </div>
-          <div class="col">
+        </div>
+
+        <div class="skill-category">
+          <h5>Automation Anywhere</h5>
+          <div class="row">
+            <div class="col"><div class="skill-container"><div class="skills aa">Expert</div></div></div>
+            <div class="col"><div class="skill-container"><div class="skills aa">Expert</div></div></div>
+            <div class="col"><div class="skill-container"><div class="skills aa">Expert</div></div></div>
+            <div class="col"><div class="skill-container"><div class="skills aa">Expert</div></div></div>
+            <div class="col"><div class="skill-container"><div class="skills aa">Expert</div></div></div>
           </div>
         </div>
       </div>
     </div>
 
-    <hr>
-
-    <div class="row">
-      <div class="col">
-        <p>C#</p>
-        <div class="row">
-          <div class="col">
-            <div class="skill-container">
-              <div class="skills c-sharp"></div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="skill-container">
-              <div class="skills c-sharp"></div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="skill-container">
-              <div class="skills c-sharp"></div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="skill-container">
-              <div class="skills"></div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="skill-container">
-              <div class="skills"></div>
-            </div>
-          </div>
-          <div class="col">
-          </div>
-        </div>
-      </div>
-
-      <div class="col">
-        <p>Unity</p>
-        <div class="row">
-          <div class="col">
-            <div class="skill-container">
-              <div class="skills unity"></div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="skill-container">
-              <div class="skills unity"></div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="skill-container">
-              <div class="skills unity"></div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="skill-container">
-              <div class="skills"></div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="skill-container">
-              <div class="skills"></div>
-            </div>
-          </div>
-          <div class="col">
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <hr>
-
-    <div class="row">
-      <div class="col">
-        <p>HTML</p>
-        <div class="row">
-          <div class="col">
-            <div class="skill-container">
-              <div class="skills html"></div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="skill-container">
-              <div class="skills html"></div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="skill-container">
-              <div class="skills html"></div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="skill-container">
-              <div class="skills html"></div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="skill-container">
-              <div class="skills html"></div>
-            </div>
-          </div>
-          <div class="col">
-          </div>
-        </div>
-      </div>
-
-      <div class="col">
-        <p>CSS</p>
-        <div class="row">
-          <div class="col">
-            <div class="skill-container">
-              <div class="skills css"></div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="skill-container">
-              <div class="skills css"></div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="skill-container">
-              <div class="skills css"></div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="skill-container">
-              <div class="skills"></div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="skill-container">
-              <div class="skills"></div>
-            </div>
-          </div>
-          <div class="col">
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <hr>
-
-    <div class="row">
-
-      <div class="col">
-        <p>Automation Anywhere (11 and 360)</p>
-        <div class="row">
-          <div class="col">
-            <div class="skill-container">
-              <div class="skills aa"></div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="skill-container">
-              <div class="skills aa"></div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="skill-container">
-              <div class="skills aa"></div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="skill-container">
-              <div class="skills aa"></div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="skill-container">
-              <div class="skills aa"></div>
-            </div>
-          </div>
-          <div class="col">
-          </div>
-        </div>
-      </div>
-
-      <div class="col"></div>
-
-    </div>
-
-    </p>
-
-    <h3>
-      <a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true">
-        <span aria-hidden="true" class="octicon octicon-link"></span>
-      </a>Portfólio
-    </h3>
-    <p>
-    <div class="row">
-
-      <div class="col">
-        <div class="card" style="width: 18rem;">
-          <img src="/img/logolauncher.PNG" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Planet Snake</h5>
-            <p class="card-text">O famoso jogo da minhoca em uma nova perspectiva</p>
-            <a href="/planet_snake/index.html" class="btn btn-primary">Página do Jogo</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col">
-        <div class="card" style="width: 18rem;">
-          <img src="/img/launcher_escape_from.png" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Escape From Student Debt</h5>
-            <p class="card-text">Jogo de quebra-cabeças para ajudar uma estudante a evitar débitos estudantis.</p>
-            <a href="/escape_from_student_debt/index.html" class="btn btn-primary">Página do Jogo</a>
-          </div>
-        </div>
-      </div>
+    <div class="section-card">
+      <h3 class="section-title">
+        <a id="portfolio" class="anchor" href="#portfolio" aria-hidden="true">
+          <span aria-hidden="true" class="octicon octicon-link"></span>
+        </a>Portfólio em Destaque
+      </h3>
       
+      <div class="row justify-content-center">
+        <div class="col-lg-5 col-md-6 col-sm-12 mb-4">
+          <div class="card portfolio-card">
+            <img src="/img/logolauncher.PNG" class="card-img-top" alt="Captura de tela do jogo Planet Snake">
+            <div class="card-body">
+              <h5 class="card-title">Planet Snake</h5>
+              <p class="card-text">Uma abordagem inovadora do clássico jogo da cobrinha com uma perspectiva 3D e mecânicas envolventes que desafiam o gameplay tradicional.</p>
+              <a href="/planet_snake/index.html" class="btn btn-primary">Jogar</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-5 col-md-6 col-sm-12 mb-4">
+          <div class="card portfolio-card">
+            <img src="/img/launcher_escape_from.png" class="card-img-top" alt="Captura de tela do jogo Escape From Student Debt">
+            <div class="card-body">
+              <h5 class="card-title">Escape From Student Debt</h5>
+              <p class="card-text">Um jogo de quebra-cabeças desafiador com uma estudante navegando obstáculos financeiros e aprendendo a tomar decisões inteligentes para evitar dívidas.</p>
+              <a href="/escape_from_student_debt/index.html" class="btn btn-primary">Jogar</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    </p>
 
     <footer class="site-footer">
-
-      <span class="site-footer-credits">Essa página foi gerada por
-        <a href="https://pages.github.com">GitHub Pages</a> usando o
-        <a href="https://github.com/jasonlong/cayman-theme">tema Cayman</a> por
-        <a href="https://twitter.com/jasonlong">Jason Long</a>.
-        <div>Ícones de bandeira feitos por <a href="https://www.freepik.com" title="Freepik">Freepik</a> de <a
-            href="https://www.flaticon.com/br/" title="Flaticon">www.flaticon.com</a></div>
-      </span>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8">
+            <span class="site-footer-credits">
+              Construído com ❤️ usando tecnologias web modernas. 
+              <br>Originalmente gerado pelo <a href="https://pages.github.com">GitHub Pages</a> 
+              com o <a href="https://github.com/jasonlong/cayman-theme">tema Cayman</a> por 
+              <a href="https://twitter.com/jasonlong">Jason Long</a>.
+            </span>
+          </div>
+          <div class="col-md-4 text-right">
+            <small>Ícones de bandeira por <a href="https://www.freepik.com" title="Freepik">Freepik</a> 
+            de <a href="https://www.flaticon.com/br/" title="Flaticon">Flaticon</a></small>
+          </div>
+        </div>
+      </div>
     </footer>
 
   </section>
