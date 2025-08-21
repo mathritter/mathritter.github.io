@@ -41,8 +41,8 @@
         });
       }, observerOptions);
 
-      // Observe all section cards and skill categories
-      document.querySelectorAll('.section-card, .skill-category, .portfolio-card').forEach(el => {
+      // Observe all section cards and skill items
+      document.querySelectorAll('.section-card, .skill-item, .portfolio-card').forEach(el => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(30px)';
         observer.observe(el);
