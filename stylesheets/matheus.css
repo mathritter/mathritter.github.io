@@ -458,7 +458,7 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 2px;
 }
 
-/* Enhanced portfolio cards */
+/* Enhanced portfolio cards with equal heights */
 .portfolio-card {
   transition: all 0.3s ease;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
@@ -466,6 +466,9 @@ h1, h2, h3, h4, h5, h6 {
   overflow: hidden;
   box-shadow: var(--card-shadow) !important;
   background: var(--background-white) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
 }
 
 .portfolio-card:hover {
@@ -477,6 +480,7 @@ h1, h2, h3, h4, h5, h6 {
   transition: all 0.3s ease;
   height: 200px;
   object-fit: cover;
+  flex-shrink: 0;
 }
 
 .portfolio-card:hover .card-img-top {
@@ -485,18 +489,23 @@ h1, h2, h3, h4, h5, h6 {
 
 .portfolio-card .card-body {
   padding: 1.5rem !important;
+  display: flex !important;
+  flex-direction: column !important;
+  flex-grow: 1 !important;
 }
 
 .portfolio-card .card-title {
   font-weight: 600;
   color: var(--text-primary);
   margin-bottom: 1rem;
+  flex-shrink: 0;
 }
 
 .portfolio-card .card-text {
   color: var(--text-secondary);
   line-height: 1.6;
   margin-bottom: 1.5rem;
+  flex-grow: 1 !important;
 }
 
 .portfolio-card .btn {
@@ -508,6 +517,8 @@ h1, h2, h3, h4, h5, h6 {
   text-transform: uppercase;
   letter-spacing: 0.5px;
   transition: all 0.3s ease !important;
+  margin-top: auto !important;
+  align-self: flex-start !important;
 }
 
 .portfolio-card .btn:hover {
