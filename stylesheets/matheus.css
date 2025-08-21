@@ -12,49 +12,43 @@ body {
   min-height: 100vh;
 }
 
-/* Enhanced page header with constellation background */
+/* Matrix-style page header */
 .page-header {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
   position: relative;
   overflow: hidden;
 }
 
+/* Matrix falling code effect */
 .page-header::before {
-  content: '';
+  content: "01001000 01100101 01101100 01101100 01101111 00100000 01010111 01101111 01110010 01101100 01100100 00001010 01000010 01100001 01100011 01101011 01100101 01101110 01100100 00100000 01000100 01100101 01110110 01100101 01101100 01101111 01110000 01100101 01110010 00001010 01000110 01110010 01101111 01101110 01110100 01100101 01101110 01100100 00100000 01000100 01100101 01110110 01100101 01101100 01101111 01110000 01100101 01110010 00001010 01001000 01010100 01001101 01001100 00100000 01000011 01010011 01010011 00100000 01001010 01100001 01110110 01100001 01010011 01100011 01110010 01101001 01110000 01110100 00001010 01010000 01001000 01010000 00100000 01000011 00100011 00100000 01010101 01101110 01101001 01110100 01111001 00001010 01010010 01100101 01100001 01100011 01110100 00100000 01001110 01101111 01100100 01100101 00100000 01000001 01101110 01100111 01110101 01101100 01100001 01110010";
   position: absolute;
-  top: 0;
+  top: -100%;
   left: 0;
   right: 0;
-  bottom: 0;
-  background-image: 
-    radial-gradient(2px 2px at 20px 30px, rgba(255,255,255,0.8), transparent),
-    radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.6), transparent),
-    radial-gradient(1px 1px at 90px 40px, rgba(255,255,255,0.9), transparent),
-    radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.7), transparent),
-    radial-gradient(2px 2px at 160px 30px, rgba(255,255,255,0.8), transparent),
-    radial-gradient(1px 1px at 200px 50px, rgba(255,255,255,0.6), transparent),
-    radial-gradient(1px 1px at 230px 90px, rgba(255,255,255,0.9), transparent),
-    radial-gradient(2px 2px at 280px 10px, rgba(255,255,255,0.7), transparent),
-    radial-gradient(1px 1px at 320px 70px, rgba(255,255,255,0.8), transparent),
-    radial-gradient(2px 2px at 380px 40px, rgba(255,255,255,0.6), transparent),
-    radial-gradient(1px 1px at 420px 20px, rgba(255,255,255,0.9), transparent),
-    radial-gradient(1px 1px at 460px 80px, rgba(255,255,255,0.7), transparent);
-  background-repeat: repeat;
-  background-size: 500px 100px;
-  animation: constellation-scroll 60s linear infinite;
+  height: 200%;
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 10px;
+  line-height: 12px;
+  color: rgba(0, 255, 0, 0.3);
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  z-index: 1;
+  animation: matrix-fall 20s linear infinite;
   transition: animation-duration 0.3s ease;
 }
 
 .page-header:hover::before {
-  animation-duration: 20s;
+  animation-duration: 8s;
+  color: rgba(0, 255, 0, 0.6);
 }
 
-@keyframes constellation-scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-500px); }
+@keyframes matrix-fall {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(50%); }
 }
 
-/* Add connecting lines between stars on hover */
+/* Matrix grid lines */
 .page-header::after {
   content: '';
   position: absolute;
@@ -63,21 +57,29 @@ body {
   right: 0;
   bottom: 0;
   background-image: 
-    linear-gradient(45deg, transparent 49%, rgba(255,255,255,0.1) 49.5%, rgba(255,255,255,0.1) 50.5%, transparent 51%),
-    linear-gradient(-45deg, transparent 49%, rgba(255,255,255,0.1) 49.5%, rgba(255,255,255,0.1) 50.5%, transparent 51%);
-  background-size: 100px 100px, 120px 120px;
+    linear-gradient(90deg, rgba(0, 255, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(rgba(0, 255, 0, 0.03) 1px, transparent 1px);
+  background-size: 20px 20px;
+  z-index: 1;
   opacity: 0;
   transition: opacity 0.5s ease;
-  animation: constellation-lines 80s linear infinite;
 }
 
 .page-header:hover::after {
   opacity: 1;
 }
 
-@keyframes constellation-lines {
-  0% { transform: translateX(0) rotate(0deg); }
-  100% { transform: translateX(-200px) rotate(360deg); }
+/* Matrix glitch effect */
+@keyframes matrix-glitch {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-2px); }
+  40% { transform: translateX(2px); }
+  60% { transform: translateX(-1px); }
+  80% { transform: translateX(1px); }
+}
+
+.page-header:hover .project-name {
+  animation: matrix-glitch 0.3s ease-in-out;
 }
 
 .project-name {
@@ -419,32 +421,202 @@ body {
   box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4) !important;
 }
 
-/* Skills section improvements */
-.skills-grid {
+/* Modern skills section */
+.modern-skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+  gap: 1.5rem;
   margin: 2rem 0;
 }
 
-.skill-category {
+.skill-item {
+  display: flex;
+  align-items: center;
   background: var(--background-white);
   padding: 1.5rem;
   border-radius: var(--border-radius);
   box-shadow: var(--card-shadow);
   transition: all 0.3s ease;
+  border-left: 4px solid transparent;
 }
 
-.skill-category:hover {
+.skill-item:hover {
   box-shadow: var(--card-shadow-hover);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
 }
 
-.skill-category h5 {
+.skill-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: var(--border-radius-small);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: white;
+  margin-right: 1.5rem;
+  flex-shrink: 0;
+  font-family: 'JetBrains Mono', monospace;
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-icon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.skill-item:hover .skill-icon::before {
+  left: 100%;
+}
+
+.skill-info {
+  flex: 1;
+}
+
+.skill-info h4 {
+  margin: 0 0 0.5rem 0;
   font-weight: 600;
   color: var(--text-primary);
-  margin-bottom: 1rem;
-  text-align: center;
+  font-size: 1.1rem;
+}
+
+.skill-bar {
+  width: 100%;
+  height: 6px;
+  background: #e2e8f0;
+  border-radius: 3px;
+  overflow: hidden;
+  margin: 0.5rem 0;
+}
+
+.skill-progress {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 2s ease-in-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-progress::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent);
+  background-size: 20px 20px;
+  animation: progress-stripes 1s linear infinite;
+}
+
+@keyframes progress-stripes {
+  0% { background-position: 0 0; }
+  100% { background-position: 20px 0; }
+}
+
+.skill-level {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* Skill icon colors and progress widths */
+.php-icon {
+  background: linear-gradient(135deg, #777bb4 0%, #617cbe 100%);
+}
+.skill-item:hover .php-icon {
+  border-left-color: #777bb4;
+}
+.php-progress {
+  background: linear-gradient(135deg, #777bb4 0%, #617cbe 100%);
+  width: 95%;
+}
+
+.js-icon {
+  background: linear-gradient(135deg, #f0db4f 0%, #f7e018 100%);
+  color: #2d3748 !important;
+}
+.skill-item:hover .js-icon {
+  border-left-color: #f0db4f;
+}
+.js-progress {
+  background: linear-gradient(135deg, #f0db4f 0%, #f7e018 100%);
+  width: 85%;
+}
+
+.html-icon {
+  background: linear-gradient(135deg, #e34f26 0%, #f16529 100%);
+}
+.skill-item:hover .html-icon {
+  border-left-color: #e34f26;
+}
+.html-progress {
+  background: linear-gradient(135deg, #e34f26 0%, #f16529 100%);
+  width: 95%;
+}
+
+.css-icon {
+  background: linear-gradient(135deg, #1572b6 0%, #2196F3 100%);
+}
+.skill-item:hover .css-icon {
+  border-left-color: #1572b6;
+}
+.css-progress {
+  background: linear-gradient(135deg, #1572b6 0%, #2196F3 100%);
+  width: 85%;
+}
+
+.csharp-icon {
+  background: linear-gradient(135deg, #239120 0%, #6a1f7c 100%);
+}
+.skill-item:hover .csharp-icon {
+  border-left-color: #239120;
+}
+.csharp-progress {
+  background: linear-gradient(135deg, #239120 0%, #6a1f7c 100%);
+  width: 70%;
+}
+
+.unity-icon {
+  background: linear-gradient(135deg, #000000 0%, #434343 100%);
+}
+.skill-item:hover .unity-icon {
+  border-left-color: #434343;
+}
+.unity-progress {
+  background: linear-gradient(135deg, #000000 0%, #434343 100%);
+  width: 70%;
+}
+
+.react-icon {
+  background: linear-gradient(135deg, #61dafb 0%, #21a9c7 100%);
+  color: #1a202c !important;
+}
+.skill-item:hover .react-icon {
+  border-left-color: #61dafb;
+}
+.react-progress {
+  background: linear-gradient(135deg, #61dafb 0%, #21a9c7 100%);
+  width: 80%;
+}
+
+.node-icon {
+  background: linear-gradient(135deg, #68a063 0%, #8cc84b 100%);
+}
+.skill-item:hover .node-icon {
+  border-left-color: #68a063;
+}
+.node-progress {
+  background: linear-gradient(135deg, #68a063 0%, #8cc84b 100%);
+  width: 80%;
 }
 
 /* Responsive improvements */
