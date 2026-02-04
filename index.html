@@ -1,296 +1,643 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="en" class="scroll-smooth">
 
 <head>
   <meta charset="UTF-8">
-  <title>Matheus Ritter Camargo</title>
+  <title>Matheus Ritter Camargo - Senior Software Engineer</title>
   <link rel="icon" type="image/png" href="/img/favicon_M2.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
-  <link href='https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-  <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
-  <link rel="stylesheet" type="text/css" href="stylesheets/matheus.css" media="screen">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Distinctive Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
   <script src="https://kit.fontawesome.com/fda986293f.js" crossorigin="anonymous"></script>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
-    integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
-    integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
-    crossorigin="anonymous"></script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="stylesheets/portfolio.css">
+
   <script>
-    // Modern animations and interactions
-    document.addEventListener('DOMContentLoaded', function() {
-      // Animate skill containers on scroll
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-      };
-
-      const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.style.animation = 'fadeInUp 0.6s ease-out forwards';
-            entry.target.style.animationDelay = Math.random() * 0.3 + 's';
-          }
-        });
-      }, observerOptions);
-
-      // Observe all section cards and skill items
-      document.querySelectorAll('.section-card, .skill-item, .portfolio-card').forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        observer.observe(el);
-      });
-
-      // Add hover effect for skills
-      document.querySelectorAll('.skills').forEach(skill => {
-        skill.addEventListener('mouseenter', function() {
-          this.style.transform = 'scale(1.05)';
-        });
-        
-        skill.addEventListener('mouseleave', function() {
-          this.style.transform = 'scale(1)';
-        });
-      });
-    });
-
-    // Add fadeInUp animation
-    const style = document.createElement('style');
-    style.textContent = `
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: {
+              50: '#f0f4f8',
+              100: '#d9e2ec',
+              200: '#bcccdc',
+              300: '#9fb3c8',
+              400: '#829ab1',
+              500: '#627d98',
+              600: '#486581',
+              700: '#334e68',
+              800: '#243b53',
+              900: '#102a43',
+              950: '#0a1929',
+            },
+            gold: {
+              50: '#fffbeb',
+              100: '#fef3c7',
+              200: '#fde68a',
+              300: '#fcd34d',
+              400: '#fbbf24',
+              500: '#f59e0b',
+              600: '#d97706',
+              700: '#b45309',
+              800: '#92400e',
+              900: '#78350f',
+            }
+          },
+          fontFamily: {
+            sans: ['Poppins', 'sans-serif'],
+            display: ['Poppins', 'sans-serif'],
+            mono: ['IBM Plex Mono', 'monospace'],
+          },
         }
       }
-    `;
-    document.head.appendChild(style);
+    }
   </script>
 </head>
 
-<body>
-  <section class="page-header">
-    <h1 class="project-name">Matheus Ritter Camargo</h1>
-    <h2 class="project-tagline">Backend & Frontend Developer</h2>
-  </section>
+<body class="bg-navy-950 text-navy-100 font-sans overflow-x-hidden">
 
-  <section class="main-content">
-    <div class="contact-section">
-      <div class="language-selector">
-        <div class="language-option active">
-          <img src="/img/usa.png" class="img-icon" alt="English">
-          <span>English</span>
+  <!-- Animated Background Grid -->
+  <div class="fixed inset-0 -z-10 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-navy-950 via-navy-900 to-navy-950"></div>
+    <div class="grid-pattern absolute inset-0 opacity-20"></div>
+    <div class="absolute top-0 right-0 w-1/2 h-1/2 bg-gold-500 opacity-5 blur-[150px] rounded-full animate-pulse-slow"></div>
+    <div class="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gold-600 opacity-5 blur-[150px] rounded-full animate-pulse-slow" style="animation-delay: 2s;"></div>
+  </div>
+
+  <!-- Hero Section -->
+  <header class="relative min-h-screen flex items-center justify-center px-6 py-20">
+    <div class="max-w-6xl w-full">
+      <!-- Language Selector - Top Right -->
+      <div class="absolute top-8 right-8 flex items-center gap-3 bg-navy-900/50 backdrop-blur-sm px-4 py-2 rounded-full border border-gold-500/20 hover:border-gold-500/40 transition-all duration-300">
+        <div class="flex items-center gap-2 px-3 py-1.5 bg-gold-500/10 rounded-full">
+          <img src="/img/usa.png" class="w-5 h-5 rounded-full" alt="English">
+          <span class="text-xs font-mono text-gold-300">EN</span>
         </div>
-        <div class="language-divider">|</div>
-        <div class="language-option">
-          <a href="index-ptBR.html" class="link-language">
-            <img src="/img/brasil.png" class="img-icon" alt="Portuguese">
-            <span>Português</span>
+        <div class="w-px h-4 bg-navy-700"></div>
+        <a href="index-ptBR.html" class="flex items-center gap-2 px-3 py-1.5 rounded-full hover:bg-gold-500/10 transition-all duration-300 group">
+          <img src="/img/brasil.png" class="w-5 h-5 rounded-full opacity-60 group-hover:opacity-100 transition-opacity" alt="Portuguese">
+          <span class="text-xs font-mono text-navy-400 group-hover:text-gold-300 transition-colors">PT</span>
+        </a>
+      </div>
+
+      <div class="text-center space-y-8 animate-fade-in-up">
+        <!-- Name with elegant presentation -->
+        <div class="space-y-6">
+          <h1 class="font-display text-5xl md:text-7xl lg:text-8xl font-black text-white leading-tight tracking-tight">
+            Matheus Ritter Camargo
+          </h1>
+          <div class="flex items-center justify-center gap-4">
+            <div class="h-0.5 w-24 bg-gradient-to-r from-transparent via-gold-500 to-transparent"></div>
+          </div>
+        </div>
+
+        <!-- Tagline -->
+        <p class="text-xl md:text-2xl text-navy-300 font-light tracking-wide max-w-3xl mx-auto leading-relaxed">
+          Senior Software Engineer <span class="text-gold-500">•</span> Full-Stack Developer
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8">
+          <a href="#contact" class="group relative px-8 py-4 bg-gradient-to-r from-gold-600 to-gold-500 text-navy-950 font-mono font-semibold rounded-sm overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-gold-500/50 hover:-translate-y-0.5">
+            <span class="relative z-10">Get In Touch</span>
+            <div class="absolute inset-0 bg-gradient-to-r from-gold-500 to-gold-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          </a>
+          <a href="#portfolio" class="px-8 py-4 border-2 border-gold-500/30 text-gold-400 font-mono font-semibold rounded-sm hover:bg-gold-500/10 hover:border-gold-500/60 transition-all duration-300">
+            View Projects
           </a>
         </div>
       </div>
-      <div class="contact-item">
-        <i class="far fa-envelope"></i>
-        <span>matheus.rittercamargo@gmail.com</span>
-      </div>
-      <div class="contact-item">
-        <i class="fab fa-linkedin-in"></i>
-        <a class="linkedin-link" href="https://www.linkedin.com/in/matheusritter/">
-          LinkedIn Profile
-        </a>
-      </div>
-    </div>
 
-    <div class="section-card">
-      <h3 class="section-title">
-        <a id="history" class="anchor" href="#history" aria-hidden="true">
-          <span aria-hidden="true" class="octicon octicon-link"></span>
-        </a>Professional History
-      </h3>
-      <p>I first started working in the IT business as support & helpdesk, from 2010 to 2015. Since 2016 I've been
-        working as a software developer, mostly as web developer with PHP. I have worked with different programming languages as
-        well, such as Javascript, Java, C++ and C#. Along with these technologies I also worked with some of their libraries and frameworks
-        such as AngularJS, Angular, Unity, CakePHP, jQuery, Ionic 3, NodeJS and most recently React Native. Nowadays I'm
-        a RPA (Robotic Process Automation) developer, working with Automation Anywhere, UiPath and IBM RPA for a living.
-        In my spare time I like to build new projects, solo or with colleagues.
-      </p>
-    </div>
-
-    <div class="section-card">
-      <h3 class="section-title">
-        <a id="objective" class="anchor" href="#objective" aria-hidden="true">
-          <span aria-hidden="true" class="octicon octicon-link"></span>
-        </a>Professional Objective
-      </h3>
-      <p>My focus is always to improve my skills, especially those technologies I'm working with, as well as learning new
-        ones and even revisiting older technologies. I like to share my knowledge with other people, as I believe that I learn more both from myself
-        and from those I am teaching.</p>
-    </div>
-
-    <div class="section-card">
-      <h3 class="section-title">
-        <a id="skills" class="anchor" href="#skills" aria-hidden="true">
-          <span aria-hidden="true" class="octicon octicon-link"></span>
-        </a>Technical Skills
-      </h3>
-      <p>
-        Programming languages and technologies I work with on a daily basis.
-      </p>
-
-      <div class="modern-skills-grid">
-        <div class="skill-item">
-          <div class="skill-icon php-icon">PHP</div>
-          <div class="skill-info">
-            <h4>PHP</h4>
-            <div class="skill-bar">
-              <div class="skill-progress php-progress"></div>
-            </div>
-            <span class="skill-level">Expert</span>
-          </div>
-        </div>
-
-        <div class="skill-item">
-          <div class="skill-icon js-icon">JS</div>
-          <div class="skill-info">
-            <h4>JavaScript</h4>
-            <div class="skill-bar">
-              <div class="skill-progress js-progress"></div>
-            </div>
-            <span class="skill-level">Advanced</span>
-          </div>
-        </div>
-
-        <div class="skill-item">
-          <div class="skill-icon html-icon">HTML</div>
-          <div class="skill-info">
-            <h4>HTML5</h4>
-            <div class="skill-bar">
-              <div class="skill-progress html-progress"></div>
-            </div>
-            <span class="skill-level">Expert</span>
-          </div>
-        </div>
-
-        <div class="skill-item">
-          <div class="skill-icon css-icon">CSS</div>
-          <div class="skill-info">
-            <h4>CSS3</h4>
-            <div class="skill-bar">
-              <div class="skill-progress css-progress"></div>
-            </div>
-            <span class="skill-level">Advanced</span>
-          </div>
-        </div>
-
-        <div class="skill-item">
-          <div class="skill-icon csharp-icon">C#</div>
-          <div class="skill-info">
-            <h4>C#</h4>
-            <div class="skill-bar">
-              <div class="skill-progress csharp-progress"></div>
-            </div>
-            <span class="skill-level">Intermediate</span>
-          </div>
-        </div>
-
-        <div class="skill-item">
-          <div class="skill-icon unity-icon">Unity</div>
-          <div class="skill-info">
-            <h4>Unity</h4>
-            <div class="skill-bar">
-              <div class="skill-progress unity-progress"></div>
-            </div>
-            <span class="skill-level">Intermediate</span>
-          </div>
-        </div>
-
-        <div class="skill-item">
-          <div class="skill-icon react-icon">React</div>
-          <div class="skill-info">
-            <h4>React</h4>
-            <div class="skill-bar">
-              <div class="skill-progress react-progress"></div>
-            </div>
-            <span class="skill-level">Advanced</span>
-          </div>
-        </div>
-
-        <div class="skill-item">
-          <div class="skill-icon node-icon">Node</div>
-          <div class="skill-info">
-            <h4>Node.js</h4>
-            <div class="skill-bar">
-              <div class="skill-progress node-progress"></div>
-            </div>
-            <span class="skill-level">Advanced</span>
-          </div>
+      <!-- Scroll Indicator -->
+      <div class="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce">
+        <div class="w-6 h-10 border-2 border-gold-500/30 rounded-full flex items-start justify-center p-2">
+          <div class="w-1.5 h-1.5 bg-gold-500 rounded-full animate-pulse"></div>
         </div>
       </div>
     </div>
+  </header>
 
-    <div class="section-card">
-      <h3 class="section-title">
-        <a id="portfolio" class="anchor" href="#portfolio" aria-hidden="true">
-          <span aria-hidden="true" class="octicon octicon-link"></span>
-        </a>Featured Portfolio
-      </h3>
-      
-      <div class="row justify-content-center">
-        <div class="col-lg-5 col-md-6 col-sm-12 mb-4">
-          <div class="card portfolio-card">
-            <img src="/img/logolauncher.PNG" class="card-img-top" alt="Planet Snake Game Screenshot">
-            <div class="card-body">
-              <h5 class="card-title">Planet Snake</h5>
-              <p class="card-text">An innovative twist on the classic Snake game with a fresh 3D perspective and engaging mechanics that challenge traditional gameplay.</p>
-              <a href="/planet_snake/index.html" class="btn btn-primary">Play Game</a>
+  <!-- Main Content -->
+  <main class="relative z-10 max-w-7xl mx-auto px-6 py-20 space-y-32">
+
+    <!-- Contact Section -->
+    <section id="contact" class="animate-fade-in-up">
+      <div class="bg-gradient-to-br from-navy-900/80 to-navy-800/80 backdrop-blur-xl p-12 rounded-sm border border-gold-500/20 shadow-2xl">
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="space-y-6">
+            <div class="flex items-center gap-4 group cursor-pointer">
+              <div class="w-12 h-12 bg-gold-500/10 rounded-sm flex items-center justify-center group-hover:bg-gold-500/20 transition-colors duration-300">
+                <i class="far fa-envelope text-gold-400 text-xl"></i>
+              </div>
+              <div class="min-w-0 flex-1">
+                <p class="text-xs font-mono text-navy-400 uppercase tracking-widest">Email</p>
+                <p class="text-navy-200 font-mono text-sm break-all">matheus.rittercamargo@gmail.com</p>
+              </div>
+            </div>
+          </div>
+          <div class="space-y-6">
+            <a href="https://www.linkedin.com/in/matheusritter/" target="_blank" class="flex items-center gap-4 group">
+              <div class="w-12 h-12 bg-gold-500/10 rounded-sm flex items-center justify-center group-hover:bg-gold-500/20 transition-colors duration-300">
+                <i class="fab fa-linkedin-in text-gold-400 text-xl"></i>
+              </div>
+              <div>
+                <p class="text-xs font-mono text-navy-400 uppercase tracking-widest">LinkedIn</p>
+                <p class="text-gold-400 font-mono group-hover:text-gold-300 transition-colors">View Profile →</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Professional History -->
+    <section id="history" class="animate-fade-in-up">
+      <div class="mb-12">
+        <div class="flex items-center gap-6 mb-4">
+          <div class="w-16 h-px bg-gradient-to-r from-gold-500 to-transparent"></div>
+          <h3 class="font-display text-4xl md:text-5xl font-bold text-gold-400">Professional Journey</h3>
+        </div>
+      </div>
+
+      <div class="bg-gradient-to-br from-navy-900/60 to-navy-800/60 backdrop-blur-xl p-12 rounded-sm border border-gold-500/10">
+        <div class="prose prose-invert prose-lg max-w-none">
+          <p class="text-navy-200 leading-relaxed text-lg">
+            I first started working in the IT business as support & helpdesk, from <span class="text-gold-400 font-semibold">2010 to 2015</span>. Since <span class="text-gold-400 font-semibold">2016</span> I've been working as a software developer, mostly as web developer with <span class="text-gold-400 font-semibold">PHP</span>. I have worked with different programming languages as well, such as <span class="text-gold-400 font-semibold">Javascript, Java, C++</span> and <span class="text-gold-400 font-semibold">C#</span>. Along with these technologies I also worked with some of their libraries and frameworks such as <span class="text-gold-400 font-semibold">AngularJS, Angular, Unity, CakePHP, jQuery, Ionic 3, NodeJS</span> and most recently <span class="text-gold-400 font-semibold">React Native</span>.
+          </p>
+          <p class="text-navy-200 leading-relaxed text-lg mt-6">
+            Currently focused on building scalable web applications and exploring new technologies while continuously expanding my expertise in modern development practices.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Professional Objective -->
+    <section id="objective" class="animate-fade-in-up">
+      <div class="mb-12">
+        <div class="flex items-center gap-6 mb-4">
+          <div class="w-16 h-px bg-gradient-to-r from-gold-500 to-transparent"></div>
+          <h3 class="font-display text-4xl md:text-5xl font-bold text-gold-400">Objective</h3>
+        </div>
+      </div>
+
+      <div class="bg-gradient-to-br from-navy-900/60 to-navy-800/60 backdrop-blur-xl p-12 rounded-sm border border-gold-500/10">
+        <p class="text-navy-200 leading-relaxed text-lg">
+          My focus is always to improve my skills, especially those technologies I'm working with, as well as learning new ones and even revisiting older technologies. I like to share my knowledge with other people, as I believe that I learn more both from myself and from those I am teaching.
+        </p>
+      </div>
+    </section>
+
+    <!-- Tech Stack Section -->
+    <section id="stack" class="animate-fade-in-up">
+      <div class="mb-16">
+        <div class="flex items-center gap-6 mb-4">
+          <div class="w-16 h-px bg-gradient-to-r from-gold-500 to-transparent"></div>
+          <h3 class="font-display text-4xl md:text-5xl font-bold text-gold-400">Technology Stack</h3>
+        </div>
+        <p class="text-navy-300 text-lg ml-22 max-w-3xl">
+          Technologies and frameworks I have proficiency with and have worked extensively throughout my career.
+        </p>
+      </div>
+
+      <!-- Tech Categories -->
+      <div class="space-y-16">
+
+        <!-- Languages -->
+        <div class="tech-category-container">
+          <div class="mb-8 flex items-center gap-4">
+            <div class="w-1 h-8 bg-gradient-to-b from-gold-500 to-gold-600 rounded-full"></div>
+            <h4 class="font-display text-2xl font-bold text-gold-400">Languages</h4>
+            <div class="flex-1 h-px bg-gradient-to-r from-gold-500/30 to-transparent"></div>
+          </div>
+          <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
+
+            <!-- PHP -->
+            <div class="tech-card group">
+              <div class="tech-icon bg-gradient-to-br from-indigo-600 to-purple-700">
+                <span class="font-mono font-bold text-2xl">PHP</span>
+              </div>
+              <div class="mt-4">
+                <h5 class="font-mono font-semibold text-navy-100">PHP</h5>
+                <p class="text-xs font-mono text-gold-400 mt-1">Expert</p>
+              </div>
+              <div class="tech-glow"></div>
+            </div>
+
+            <!-- JavaScript -->
+            <div class="tech-card group">
+              <div class="tech-icon bg-gradient-to-br from-yellow-500 to-yellow-600">
+                <span class="font-mono font-bold text-2xl text-navy-950">JS</span>
+              </div>
+              <div class="mt-4">
+                <h5 class="font-mono font-semibold text-navy-100">JavaScript</h5>
+                <p class="text-xs font-mono text-gold-400 mt-1">Advanced</p>
+              </div>
+              <div class="tech-glow"></div>
+            </div>
+
+            <!-- C# -->
+            <div class="tech-card group">
+              <div class="tech-icon bg-gradient-to-br from-purple-600 to-purple-800">
+                <span class="font-mono font-bold text-2xl">C#</span>
+              </div>
+              <div class="mt-4">
+                <h5 class="font-mono font-semibold text-navy-100">C#</h5>
+                <p class="text-xs font-mono text-gold-400 mt-1">Intermediate</p>
+              </div>
+              <div class="tech-glow"></div>
+            </div>
+
+            <!-- TypeScript -->
+            <div class="tech-card group">
+              <div class="tech-icon bg-gradient-to-br from-blue-500 to-blue-700">
+                <span class="font-mono font-bold text-2xl">TS</span>
+              </div>
+              <div class="mt-4">
+                <h5 class="font-mono font-semibold text-navy-100">TypeScript</h5>
+                <p class="text-xs font-mono text-gold-400 mt-1">Advanced</p>
+              </div>
+              <div class="tech-glow"></div>
+            </div>
+
+            <!-- Java -->
+            <div class="tech-card group">
+              <div class="tech-icon bg-gradient-to-br from-red-600 to-orange-600">
+                <span class="font-mono font-bold text-xl">Java</span>
+              </div>
+              <div class="mt-4">
+                <h5 class="font-mono font-semibold text-navy-100">Java</h5>
+                <p class="text-xs font-mono text-gold-400 mt-1">Intermediate</p>
+              </div>
+              <div class="tech-glow"></div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Frontend -->
+        <div class="tech-category-container">
+          <div class="mb-8 flex items-center gap-4">
+            <div class="w-1 h-8 bg-gradient-to-b from-gold-500 to-gold-600 rounded-full"></div>
+            <h4 class="font-display text-2xl font-bold text-gold-400">Frontend</h4>
+            <div class="flex-1 h-px bg-gradient-to-r from-gold-500/30 to-transparent"></div>
+          </div>
+          <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
+
+            <!-- React -->
+            <div class="tech-card group">
+              <div class="tech-icon bg-gradient-to-br from-cyan-500 to-blue-600">
+                <span class="font-mono font-bold text-xl">React</span>
+              </div>
+              <div class="mt-4">
+                <h5 class="font-mono font-semibold text-navy-100">React</h5>
+                <p class="text-xs font-mono text-gold-400 mt-1">Advanced</p>
+              </div>
+              <div class="tech-glow"></div>
+            </div>
+
+            <!-- Angular -->
+            <div class="tech-card group">
+              <div class="tech-icon bg-gradient-to-br from-red-600 to-red-700">
+                <span class="font-mono font-bold text-base">NG</span>
+              </div>
+              <div class="mt-4">
+                <h5 class="font-mono font-semibold text-navy-100">Angular</h5>
+                <p class="text-xs font-mono text-gold-400 mt-1">Advanced</p>
+              </div>
+              <div class="tech-glow"></div>
+            </div>
+
+            <!-- HTML5 -->
+            <div class="tech-card group">
+              <div class="tech-icon bg-gradient-to-br from-orange-600 to-red-600">
+                <span class="font-mono font-bold text-xl">HTML</span>
+              </div>
+              <div class="mt-4">
+                <h5 class="font-mono font-semibold text-navy-100">HTML5</h5>
+                <p class="text-xs font-mono text-gold-400 mt-1">Expert</p>
+              </div>
+              <div class="tech-glow"></div>
+            </div>
+
+            <!-- CSS3 -->
+            <div class="tech-card group">
+              <div class="tech-icon bg-gradient-to-br from-blue-600 to-blue-700">
+                <span class="font-mono font-bold text-xl">CSS</span>
+              </div>
+              <div class="mt-4">
+                <h5 class="font-mono font-semibold text-navy-100">CSS3</h5>
+                <p class="text-xs font-mono text-gold-400 mt-1">Advanced</p>
+              </div>
+              <div class="tech-glow"></div>
+            </div>
+
+            <!-- jQuery -->
+            <div class="tech-card group">
+              <div class="tech-icon bg-gradient-to-br from-blue-500 to-indigo-600">
+                <span class="font-mono font-bold text-lg">jQ</span>
+              </div>
+              <div class="mt-4">
+                <h5 class="font-mono font-semibold text-navy-100">jQuery</h5>
+                <p class="text-xs font-mono text-gold-400 mt-1">Advanced</p>
+              </div>
+              <div class="tech-glow"></div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Backend & Frameworks -->
+        <div class="tech-category-container">
+          <div class="mb-8 flex items-center gap-4">
+            <div class="w-1 h-8 bg-gradient-to-b from-gold-500 to-gold-600 rounded-full"></div>
+            <h4 class="font-display text-2xl font-bold text-gold-400">Backend & Frameworks</h4>
+            <div class="flex-1 h-px bg-gradient-to-r from-gold-500/30 to-transparent"></div>
+          </div>
+          <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
+
+            <!-- Node.js -->
+            <div class="tech-card group">
+              <div class="tech-icon bg-gradient-to-br from-green-600 to-green-700">
+                <span class="font-mono font-bold text-lg">Node</span>
+              </div>
+              <div class="mt-4">
+                <h5 class="font-mono font-semibold text-navy-100">Node.js</h5>
+                <p class="text-xs font-mono text-gold-400 mt-1">Advanced</p>
+              </div>
+              <div class="tech-glow"></div>
+            </div>
+
+            <!-- CakePHP -->
+            <div class="tech-card group">
+              <div class="tech-icon bg-gradient-to-br from-red-500 to-red-700">
+                <span class="font-mono font-bold text-base">Cake</span>
+              </div>
+              <div class="mt-4">
+                <h5 class="font-mono font-semibold text-navy-100">CakePHP</h5>
+                <p class="text-xs font-mono text-gold-400 mt-1">Advanced</p>
+              </div>
+              <div class="tech-glow"></div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Mobile Development -->
+        <div class="tech-category-container">
+          <div class="mb-8 flex items-center gap-4">
+            <div class="w-1 h-8 bg-gradient-to-b from-gold-500 to-gold-600 rounded-full"></div>
+            <h4 class="font-display text-2xl font-bold text-gold-400">Mobile Development</h4>
+            <div class="flex-1 h-px bg-gradient-to-r from-gold-500/30 to-transparent"></div>
+          </div>
+          <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
+
+            <!-- React Native -->
+            <div class="tech-card group">
+              <div class="tech-icon bg-gradient-to-br from-cyan-600 to-blue-700">
+                <span class="font-mono font-bold text-base">RN</span>
+              </div>
+              <div class="mt-4">
+                <h5 class="font-mono font-semibold text-navy-100">React Native</h5>
+                <p class="text-xs font-mono text-gold-400 mt-1">Advanced</p>
+              </div>
+              <div class="tech-glow"></div>
+            </div>
+
+            <!-- Ionic -->
+            <div class="tech-card group">
+              <div class="tech-icon bg-gradient-to-br from-blue-500 to-blue-600">
+                <span class="font-mono font-bold text-base">Ionic</span>
+              </div>
+              <div class="mt-4">
+                <h5 class="font-mono font-semibold text-navy-100">Ionic</h5>
+                <p class="text-xs font-mono text-gold-400 mt-1">Advanced</p>
+              </div>
+              <div class="tech-glow"></div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Game Development -->
+        <div class="tech-category-container">
+          <div class="mb-8 flex items-center gap-4">
+            <div class="w-1 h-8 bg-gradient-to-b from-gold-500 to-gold-600 rounded-full"></div>
+            <h4 class="font-display text-2xl font-bold text-gold-400">Game Development</h4>
+            <div class="flex-1 h-px bg-gradient-to-r from-gold-500/30 to-transparent"></div>
+          </div>
+          <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
+
+            <!-- Unity -->
+            <div class="tech-card group">
+              <div class="tech-icon bg-gradient-to-br from-gray-800 to-black">
+                <span class="font-mono font-bold text-xl">Unity</span>
+              </div>
+              <div class="mt-4">
+                <h5 class="font-mono font-semibold text-navy-100">Unity</h5>
+                <p class="text-xs font-mono text-gold-400 mt-1">Intermediate</p>
+              </div>
+              <div class="tech-glow"></div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Tools & Database -->
+        <div class="tech-category-container">
+          <div class="mb-8 flex items-center gap-4">
+            <div class="w-1 h-8 bg-gradient-to-b from-gold-500 to-gold-600 rounded-full"></div>
+            <h4 class="font-display text-2xl font-bold text-gold-400">Tools & Database</h4>
+            <div class="flex-1 h-px bg-gradient-to-r from-gold-500/30 to-transparent"></div>
+          </div>
+          <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
+
+            <!-- Git -->
+            <div class="tech-card group">
+              <div class="tech-icon bg-gradient-to-br from-orange-600 to-red-700">
+                <span class="font-mono font-bold text-xl">Git</span>
+              </div>
+              <div class="mt-4">
+                <h5 class="font-mono font-semibold text-navy-100">Git</h5>
+                <p class="text-xs font-mono text-gold-400 mt-1">Advanced</p>
+              </div>
+              <div class="tech-glow"></div>
+            </div>
+
+            <!-- MySQL -->
+            <div class="tech-card group">
+              <div class="tech-icon bg-gradient-to-br from-blue-500 to-blue-700">
+                <span class="font-mono font-bold text-base">SQL</span>
+              </div>
+              <div class="mt-4">
+                <h5 class="font-mono font-semibold text-navy-100">MySQL</h5>
+                <p class="text-xs font-mono text-gold-400 mt-1">Advanced</p>
+              </div>
+              <div class="tech-glow"></div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="animate-fade-in-up">
+      <div class="mb-16">
+        <div class="flex items-center gap-6 mb-4">
+          <div class="w-16 h-px bg-gradient-to-r from-gold-500 to-transparent"></div>
+          <h3 class="font-display text-4xl md:text-5xl font-bold text-gold-400">Featured Projects</h3>
+        </div>
+        <p class="text-navy-300 text-lg ml-22 max-w-3xl">
+          A selection of interactive projects showcasing game development and creative problem-solving.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+
+        <!-- Planet Snake -->
+        <div class="portfolio-card group">
+          <div class="portfolio-image-container">
+            <img src="/img/logolauncher.PNG" alt="Planet Snake" class="w-full h-full object-cover">
+            <div class="portfolio-overlay">
+              <a href="/planet_snake/index.html" class="portfolio-cta">
+                <span>Launch Game</span>
+                <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+              </a>
+            </div>
+          </div>
+          <div class="p-8">
+            <h4 class="font-display text-2xl font-bold text-gold-400 mb-3">Planet Snake</h4>
+            <p class="text-navy-300 leading-relaxed mb-6">
+              An innovative twist on the classic Snake game with a fresh 3D perspective and engaging mechanics that challenge traditional gameplay.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 bg-gold-500/10 border border-gold-500/30 text-gold-300 text-xs font-mono rounded-full">Unity</span>
+              <span class="px-3 py-1 bg-gold-500/10 border border-gold-500/30 text-gold-300 text-xs font-mono rounded-full">C#</span>
+              <span class="px-3 py-1 bg-gold-500/10 border border-gold-500/30 text-gold-300 text-xs font-mono rounded-full">3D</span>
             </div>
           </div>
         </div>
 
-        <div class="col-lg-5 col-md-6 col-sm-12 mb-4">
-          <div class="card portfolio-card">
-            <img src="/img/launcher_escape_from.png" class="card-img-top" alt="Escape From Student Debt Game Screenshot">
-            <div class="card-body">
-              <h5 class="card-title">Escape From Student Debt</h5>
-              <p class="card-text">A challenging puzzle game featuring a student navigating financial obstacles and learning to make smart decisions to avoid debt.</p>
-              <a href="/escape_from_student_debt/index.html" class="btn btn-primary">Play Game</a>
+        <!-- Escape From Student Debt -->
+        <div class="portfolio-card group">
+          <div class="portfolio-image-container">
+            <img src="/img/launcher_escape_from.png" alt="Escape From Student Debt" class="w-full h-full object-cover">
+            <div class="portfolio-overlay">
+              <a href="/escape_from_student_debt/index.html" class="portfolio-cta">
+                <span>Launch Game</span>
+                <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+              </a>
             </div>
           </div>
+          <div class="p-8">
+            <h4 class="font-display text-2xl font-bold text-gold-400 mb-3">Escape From Student Debt</h4>
+            <p class="text-navy-300 leading-relaxed mb-6">
+              A challenging puzzle game featuring a student navigating financial obstacles and learning to make smart decisions to avoid debt.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 bg-gold-500/10 border border-gold-500/30 text-gold-300 text-xs font-mono rounded-full">Unity</span>
+              <span class="px-3 py-1 bg-gold-500/10 border border-gold-500/30 text-gold-300 text-xs font-mono rounded-full">C#</span>
+              <span class="px-3 py-1 bg-gold-500/10 border border-gold-500/30 text-gold-300 text-xs font-mono rounded-full">Puzzle</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="relative z-10 border-t border-gold-500/20 bg-navy-900/50 backdrop-blur-xl mt-32">
+    <div class="max-w-7xl mx-auto px-6 py-12">
+      <div class="grid md:grid-cols-2 gap-8 items-center">
+        <div class="space-y-2">
+          <p class="text-navy-400 text-sm">
+            Built with dedication using modern web technologies.
+          </p>
+          <p class="text-navy-500 text-xs">
+            Originally generated by <a href="https://pages.github.com" class="text-gold-500 hover:text-gold-400 transition-colors">GitHub Pages</a>
+            with the <a href="https://github.com/jasonlong/cayman-theme" class="text-gold-500 hover:text-gold-400 transition-colors">Cayman theme</a> by
+            <a href="https://twitter.com/jasonlong" class="text-gold-500 hover:text-gold-400 transition-colors">Jason Long</a>.
+          </p>
+        </div>
+        <div class="text-left md:text-right">
+          <p class="text-navy-500 text-xs">
+            Flag icons by <a href="https://www.freepik.com" class="text-gold-500 hover:text-gold-400 transition-colors">Freepik</a>
+            from <a href="https://www.flaticon.com/br/" class="text-gold-500 hover:text-gold-400 transition-colors">Flaticon</a>
+          </p>
+          <p class="text-navy-600 text-xs mt-2 font-mono">© 2026 Matheus Ritter Camargo</p>
         </div>
       </div>
     </div>
+  </footer>
 
-    <footer class="site-footer">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-8">
-            <span class="site-footer-credits">
-              Built with ❤️ using modern web technologies. 
-              <br>Originally generated by <a href="https://pages.github.com">GitHub Pages</a> 
-              with the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by 
-              <a href="https://twitter.com/jasonlong">Jason Long</a>.
-            </span>
-          </div>
-          <div class="col-md-4 text-right">
-            <small>Flag icons by <a href="https://www.freepik.com" title="Freepik">Freepik</a> 
-            from <a href="https://www.flaticon.com/br/" title="Flaticon">Flaticon</a></small>
-          </div>
-        </div>
-      </div>
-    </footer>
+  <!-- Scroll Animations Script -->
+  <script>
+    // Intersection Observer for scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
 
-  </section>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
 
+    // Observe all animated sections
+    document.querySelectorAll('.animate-fade-in-up').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+      observer.observe(el);
+    });
+
+    // Tech card hover effects
+    document.querySelectorAll('.tech-card').forEach(card => {
+      card.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-8px) scale(1.02)';
+      });
+
+      card.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0) scale(1)';
+      });
+    });
+
+    // Portfolio card parallax on scroll
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const cards = document.querySelectorAll('.portfolio-card');
+          cards.forEach((card, index) => {
+            const rect = card.getBoundingClientRect();
+            const scrollPercent = (window.innerHeight - rect.top) / window.innerHeight;
+            if (scrollPercent > 0 && scrollPercent < 1) {
+              const translateY = (scrollPercent - 0.5) * -20;
+              card.style.transform = `translateY(${translateY}px)`;
+            }
+          });
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+  </script>
 
 </body>
 
